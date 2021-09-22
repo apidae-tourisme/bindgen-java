@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.smile.core.components</groupId>
 	<artifactId>bindgen-java</artifactId>
-	<version>0.2.3</version>
+	<version>0.2.4</version>
 	
 	<name>owsi-core java.* bindings</name>
 	<description>Pre-generated bindings for java classes</description>
@@ -11,7 +11,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
 		<bindgen.version>3.1.1</bindgen.version>
-		<slf4j.version>1.6.1</slf4j.version>
+		<slf4j.version>1.6.6</slf4j.version>
 		<guava.version>19.0</guava.version>
 		
 		<maven-toolchains-plugin.version>1.1</maven-toolchains-plugin.version>
@@ -324,45 +324,10 @@
     </scm>
 
 	<repositories>
-		<repository>
-			<id>bindgen</id>
-			<url>http://repo.joist.ws/</url>
-		</repository>
-            <repository>
-                  <id>nexus.internal.releases</id>
-                  <url>https://nexus.vitry.intranet/content/repositories/InternalSmileReleases/</url>
-                  <snapshots>
-                     <enabled>false</enabled>
-                  </snapshots>
-            </repository>
-            <repository>
-                  <id>nexus.internal.snapshots</id>
-                  <url>https://nexus.vitry.intranet/content/repositories/InternalSmileSnapshots/</url>
-                  <releases>
-                     <enabled>true</enabled>
-                  </releases>
-            </repository>
-
-            <repository>
-                <id>nexus.internal.third-party</id>
-                <url>https://nexus.vitry.intranet/content/repositories/nonCentralArtifacts/</url>
-            </repository>
-
 	</repositories>
 
     <distributionManagement>
-        <repository>
-            <id>nexus.internal.releases</id>
-            <url>https://nexus.vitry.intranet/content/repositories/InternalSmileReleases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus.internal.snapshots</id>
-            <url>https://nexus.vitry.intranet/content/repositories/InternalSmileSnapshots/</url>
-        </snapshotRepository>
-        <site>
-           <id>maven.doc.smile</id>
-           <url>scp://pic-java.vitry.intranet/var/www/${project.groupId}/${project.artifactId}</url>
-        </site>
+
     </distributionManagement>
 
 
