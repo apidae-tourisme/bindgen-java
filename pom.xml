@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.smile.core.components</groupId>
 	<artifactId>bindgen-java</artifactId>
-	<version>0.2.4</version>
+	<version>0.3.0-SNAPSHOT</version>
 	
 	<name>owsi-core java.* bindings</name>
 	<description>Pre-generated bindings for java classes</description>
@@ -316,18 +316,27 @@
 		</pluginManagement>
 	</build>
 
-    <scm>
-        <connection>scm:git:git@git.smile.fr:skill-center-lyon/owsi-core/bindgen-java.git</connection>
-        <developerConnection>scm:git:git@git.smile.fr:skill-center-lyon/owsi-core/bindgen-java.git</developerConnection>
-        <url>https://git.smile.fr/skill-center-lyon/owsi-core/bindgen-java</url>
-        <tag>HEAD</tag>
-    </scm>
+	<scm>
+		<url>git@github.com:apidae-tourisme/bindgen-java.git</url>
+		<connection>scm:git:git@github.com:apidae-tourisme/bindgen-java.git</connection>
+		<developerConnection>scm:git:https://github.com/apidae-tourisme/bindgen-java.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 
 	<repositories>
+		<repository>
+			<id>github</id>
+			<name>Github packages</name>
+			<url>https://maven.pkg.github.com/apidae-tourisme/bindgen</url>
+		</repository>
 	</repositories>
 
     <distributionManagement>
-
+		<repository>
+			<id>github</id>
+			<name>github OWSI Core</name>
+			<url>https://maven.pkg.github.com/apidae-tourisme/bindgen-java</url>
+		</repository>
     </distributionManagement>
 
 
