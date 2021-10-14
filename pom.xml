@@ -3,23 +3,23 @@
 	<groupId>fr.smile.core.components</groupId>
 	<artifactId>bindgen-java</artifactId>
 	<version>0.3.0-SNAPSHOT</version>
-	
+
 	<name>owsi-core java.* bindings</name>
 	<description>Pre-generated bindings for java classes</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
+
 		<bindgen.version>3.1.2</bindgen.version>
 		<slf4j.version>1.6.6</slf4j.version>
 		<guava.version>19.0</guava.version>
-		
+
 		<maven-toolchains-plugin.version>1.1</maven-toolchains-plugin.version>
 		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
 		<maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
 		<maven-jgitflow-plugin.version>1.0-m5.1</maven-jgitflow-plugin.version>
 		<animal-sniffer-maven-plugin.version>1.15</animal-sniffer-maven-plugin.version>
-		
+
 		<jdk.signature.groupId>org.codehaus.mojo.signature</jdk.signature.groupId>
 		<jdk.signature.artifactId>java18</jdk.signature.artifactId>
 		<jdk.signature.version>1.0</jdk.signature.version>
@@ -137,9 +137,16 @@
 	</dependencies>
 
 	<build>
+		<extensions>
+				<extension>
+						<groupId>com.gkatzioura.maven.cloud</groupId>
+						<artifactId>s3-storage-wagon</artifactId>
+						<version>2.3</version>
+				</extension>
+		</extensions>
 		<plugins>
 			<!-- processor and compiler
-			
+
 			maven-compiler-plugin must be used in place of maven-processor-plugin because it supports toolchain
 			-->
 			<plugin>
@@ -211,9 +218,9 @@
 					</executions>
 				</plugin>
 				<!-- Enforce code compatibility with the target JRE, even when building with a newer JDK. This ensures
-					that none of the newer classes or methods that were not yet defined in the target JRE are referenced 
+					that none of the newer classes or methods that were not yet defined in the target JRE are referenced
 					in this project. See https://maven.apache.org/guides/mini/guide-building-jdk14-on-jdk15.html Please
-					be aware that code generation tools may be affected by the JDK used to compile, and thus may trigger 
+					be aware that code generation tools may be affected by the JDK used to compile, and thus may trigger
 					a failure (because they automatically referenced newer classes or methods). In this case, the only
 					way to make things work is to use the proper JDK. -->
 				<plugin>
@@ -286,7 +293,7 @@
 						</flowInitContext>
 					</configuration>
 				</plugin>
-				
+
 				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
@@ -325,19 +332,21 @@
 
 	<repositories>
 		<repository>
-			<id>github</id>
-			<name>Github packages</name>
-			<url>https://maven.pkg.github.com/apidae-tourisme/bindgen</url>
+				<id>bucket-release-repo</id>
+				<url>https://apidae-sit-packages.s3.eu-west-3.amazonaws.com/release</url>
 		</repository>
 	</repositories>
 
-    <distributionManagement>
-		<repository>
-			<id>github</id>
-			<name>github OWSI Core</name>
-			<url>https://maven.pkg.github.com/apidae-tourisme/bindgen-java</url>
-		</repository>
-    </distributionManagement>
+	<distributionManagement>
+	    <snapshotRepository>
+	        <id>snapshot-bucket</id>
+	        <url>s3://apidae-sit-packages/snapshot</url>
+	    </snapshotRepository>
+	    <repository>
+	        <id>release-bucket</id>
+	        <url>s3://apidae-sit-packages/release</url>
+	    </repository>
+	</distributionManagement>
 
 
 </project>
